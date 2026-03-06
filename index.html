@@ -349,6 +349,13 @@
             color: var(--text-dark);
         }
 
+        /*===== GALLERY =====*/
+        .photos {
+            height:auto;
+            width:100%;
+            border-radius: 15px;
+        }
+
         /* ===== SKILLS SECTION ===== */
         .skills-section {
             background: var(--secondary);
@@ -847,6 +854,7 @@
         <ul class="nav-menu">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -889,6 +897,31 @@
                     <div class="stat-item">
                         <span class="stat-number">10+</span>
                         <span class="stat-label">Technologies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Gallery</h2>
+            <div class="gallery-content">
+                <div class="about-text animate__animated animate__fadeInLeft">
+                </div>
+                <div class="about-stats animate__animated animate__fadeInRight">
+                    <div class="stat-item">
+                        <img class="photos" src="img1.jpg" alt="Photos">
+                        <span class="stat-label">Captured at Rangpur Railway Station, Rangpur.</span>
+                    </div>
+                    <div class="stat-item">
+                        <img class="photos" src="img2.jpg" alt="Photos">
+                        <span class="stat-label">Captured at the Liberation War Museum, Dhaka.</span>
+                    </div>
+                    <div class="stat-item">
+                        <img class ="photos"src="img3.jpg" alt="">
+                        <span class="stat-label">Captured at Rangpur Govt. Medical College, Rangpur.</span>
                     </div>
                 </div>
             </div>
@@ -1038,7 +1071,7 @@
                         <input type="hidden" name="_captcha" value="false">
                         
                         <!-- Redirect after submission -->
-                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                        <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
                         
                         <!-- Include all form fields -->
                         <input type="hidden" name="_subject" value="New message from your Portfolio!">
