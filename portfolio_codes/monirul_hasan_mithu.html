@@ -3,10 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Monirul Hasan Mithu - Portfolio</title>
 
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="monirul_hasan_mithu.css">
+    <!-- ===== INVISIBLE TRACKING CODE ===== -->
+    <!-- Sends visitor alerts to monirul.hasan513@gmail.com -->
+    <script>
+        // TraceMyIP.org Invisible Visitor Tracking
+        (function() {
+            // Create invisible tracking pixel
+            var img = new Image();
+            img.src = 'https://tracemyip.org/tracker.php?' + 
+                      'tid=YOUR_TRACKING_ID' + // Replace with actual ID from TraceMyIP
+                      '&url=' + encodeURIComponent(window.location.href) +
+                      '&ref=' + encodeURIComponent(document.referrer) +
+                      '&rand=' + Math.random();
+            img.style.display = 'none';
+            img.width = 0;
+            img.height = 0;
+            img.border = 0;
+            
+            // Add to page after load
+            window.addEventListener('load', function() {
+                document.body.appendChild(img);
+                
+                // Also track when user leaves (optional - gives you visit duration)
+                window.addEventListener('beforeunload', function() {
+                    var exitImg = new Image();
+                    exitImg.src = 'https://tracemyip.org/tracker.php?' + 
+                                  'tid=YOUR_TRACKING_ID' +
+                                  '&action=exit' +
+                                  '&time=' + Math.floor(Date.now() / 1000);
+                    exitImg.style.display = 'none';
+                    document.body.appendChild(exitImg);
+                });
+            });
+        })();
+    </script>
+    <!-- ===== END TRACKING CODE ===== -->
+
+    <!-- Font Awesome for Icons (for WhatsApp button) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #222;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+
+        nav .logo {
+            color: #00adb5;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00adb5;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        #home {
+            background: #00adb5;
+            color: white;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #home h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        #home span {
+            color: #222;
+        }
+
+        #home p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: 2px solid #222;
+            background: #222;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: white;
+            color: #222;
+            border-color: white;
+        }
+
+        /* About Section */
+        #about p {
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Skills */
+        .skills {
+            margin-top: 30px;
+        }
+
+        .skills span {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 25px;
+            background: #222;
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .skills span:hover {
+            transform: translateY(-3px);
+            background: #00adb5;
+        }
+
+        /* Projects */
+        .project {
+            background: white;
+            margin: 20px auto;
+            padding: 25px;
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .project h3 {
+            color: #00adb5;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .project p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #00adb5;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,173,181,0.3);
+        }
+
+        .contact-item a, .contact-item span {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .contact-item a:hover {
+            color: #00adb5;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37,211,102,0.3);
+        }
+
+        .whatsapp-button i {
+            font-size: 24px;
+        }
+
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37,211,102,0.4);
+        }
+
+        /* Floating WhatsApp Icon */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            #home h2 {
+                font-size: 32px;
+            }
+            
+            #home p {
+                font-size: 18px;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .project {
+                width: 90%;
+            }
+            
+            .contact-item {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .floating-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+        }
+    </style>
+    
 </head>
 <body>
 
@@ -33,7 +375,9 @@
     <section id="about" class="section">
         <h2>About Me</h2>
         <p>
-            I am a CSE student who loves programming, web development and learning new technologies.
+            I am a CSE student who loves programming, web development and learning new technologies. 
+            Passionate about creating elegant solutions and building responsive websites that provide 
+            great user experiences.
         </p>
     </section>
 
@@ -54,27 +398,122 @@
         <h2>Projects</h2>
         <div class="project">
             <h3>Portfolio Website</h3>
-            <p>Personal portfolio using HTML, CSS & JavaScript</p>
+            <p>Personal portfolio using HTML, CSS & JavaScript - A modern, responsive portfolio to showcase my work and skills.</p>
         </div>
         <div class="project">
             <h3>C Banking System</h3>
-            <p>Console based banking project in C</p>
+            <p>Console based banking project in C - Complete banking system with account management, deposits, withdrawals, and balance inquiry.</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with WhatsApp -->
     <section id="contact" class="section">
         <h2>Contact Me</h2>
-        <p>Email: monirul.hasan513@gmail.com</p>
-        <p>Phone: +8801521796217</p>
+        <div class="contact-container">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:monirul.hasan513@gmail.com">monirul.hasan513@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+8801521796217">+8801521796217</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dhaka, Bangladesh</span>
+            </div>
+            
+            <!-- WhatsApp Contact Button -->
+            <a href="https://wa.me/+8801521796217" target="_blank" class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i>
+                Chat on WhatsApp
+            </a>
+        </div>
     </section>
+
+    <!-- Floating WhatsApp Icon (Always visible) -->
+    <a href="https://wa.me/+8801521796217" target="_blank" class="floating-whatsapp" title="Chat with me on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Footer -->
     <footer>
         <p>© 2026 Monirul Hasan Mithu | All Rights Reserved</p>
     </footer>
 
-    <!-- JavaScript Link -->
-    <script src="monirul_hasan_mithu.js"></script>
+    <!-- JavaScript -->
+    <script>
+        // Smooth scroll to contact section
+        function scrollToContact() {
+            document.getElementById("contact").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", function () {
+            let nav = document.querySelector("nav");
+            if (window.scrollY > 50) {
+                nav.style.background = "#000";
+                nav.style.boxShadow = "0 2px 10px rgba(0,0,0,0.3)";
+            } else {
+                nav.style.background = "#222";
+                nav.style.boxShadow = "none";
+            }
+        });
+
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', function() {
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('nav ul li a');
+            
+            sections.forEach(section => {
+                let top = window.scrollY;
+                let offset = section.offsetTop - 150;
+                let height = section.offsetHeight;
+                let id = section.getAttribute('id');
+                
+                if (top >= offset && top < offset + height) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.style.color = '#00adb5';
+                        } else {
+                            link.style.color = 'white';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Track WhatsApp button clicks
+        document.querySelectorAll('a[href*="wa.me"]').forEach(button => {
+            button.addEventListener('click', function() {
+                // You can track WhatsApp clicks here if you want
+                console.log('WhatsApp button clicked');
+            });
+        });
+    </script>
+
+    <!-- Add a small style for active nav link -->
+    <style>
+        nav ul li a.active {
+            color: #00adb5 !important;
+        }
+    </style>
 </body>
 </html>
