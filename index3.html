@@ -400,60 +400,24 @@
             color: var(--text-dark);
         }
 
-        /* ===== GALLERY - FIXED IMAGE DISPLAY ===== */
+        /* ===== GALLERY - FULLY RESPONSIVE ===== */
+        .photos {
+            height: auto;
+            width: 100%;
+            max-width: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+        }
+
         .gallery-content {
             width: 100%;
         }
 
         .gallery-content .about-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-            gap: clamp(20px, 3vw, 30px);
-        }
-
-        .gallery-content .stat-item {
-            padding: 15px 15px 20px 15px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .photos {
-            width: 100%;
-            height: 250px; /* Fixed height for consistency */
-            object-fit: contain; /* Shows full image without cropping */
-            object-position: center;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            background-color: #f0f0f0; /* Background for letterboxing */
-            border: 1px solid #e0e0e0;
-        }
-
-        /* Different heights for different screen sizes */
-        @media (max-width: 768px) {
-            .photos {
-                height: 220px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .photos {
-                height: 200px;
-            }
-        }
-
-        /* For very large screens */
-        @media (min-width: 1200px) {
-            .photos {
-                height: 280px;
-            }
-        }
-
-        /* Optional: Add zoom effect on hover */
-        .gallery-content .stat-item:hover .photos {
-            transform: scale(1.02);
-            transition: transform 0.3s ease;
-            box-shadow: var(--shadow-hover);
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(15px, 3vw, 25px);
         }
 
         /* ===== SKILLS SECTION - RESPONSIVE ===== */
@@ -1121,7 +1085,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section - FIXED IMAGES -->
+    <!-- Gallery Section -->
     <section id="gallery">
         <div class="container">
             <h2 class="section-title animate__animated animate__fadeIn">Gallery</h2>
