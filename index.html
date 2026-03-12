@@ -53,7 +53,6 @@
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -715,6 +714,20 @@
         .footer-links a:hover {
             color: var(--primary);
         }
+          /*Contact Dev Style*/
+        .contactDev{
+            text-align:start;
+            bottom : 5px;
+            left: 12px;
+            font-size: 10px;
+            margin-bottom: 1px;
+        }
+        .contactDev a{
+            color :white;
+        }
+        .contactDev a:hover{
+            color:#25D366;
+        }
 
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInDown {
@@ -1122,7 +1135,6 @@
     <a href="https://wa.me/+8801521796217" target="_blank" class="floating-whatsapp" title="Chat with me on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1136,6 +1148,14 @@
             </div>
         </div>
         <p>© 2026 Monirul Hasan Mithu. All Rights Reserved.</p>
+
+        <!--Contact Dev Section-->
+        <div class="contactDev">
+            <p>Do you also need a portfolio website? </p>
+            <p>Just contact at : <i class="fas fa-envelope "></i>
+            <a href="mailto:dev.get.in.touch@gmail.com">dev.get.in.touch@gmail.com</a>
+        </div>
+   
     </footer>
 
     <!-- JavaScript -->
@@ -1152,7 +1172,6 @@
                 icon.classList.add('fa-bars');
             }
         }
-
         // ===== NAVBAR SCROLL EFFECT =====
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -1198,4 +1217,3 @@
                     // Close mobile menu after click
                     document.querySelector('.nav-menu').classList.remove('active');
                     const icon = document
-                
