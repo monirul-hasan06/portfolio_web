@@ -1,0 +1,12 @@
+{
+  "name": "Monirul Hasan Mithu — Portfolio",
+  "short_name": "Monirul",
+  "description": "Portfolio of Monirul Hasan Mithu, web developer and CSE student.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b14",
+  "theme_color": "#0b1020",
+  "icons": [
+    {"src": "assets/images/favicon.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

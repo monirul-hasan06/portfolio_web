@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Portfolio of Monirul Hasan Mithu, a CSE student and web developer based in Dhaka, Bangladesh.">
+  <meta name="keywords" content="Monirul Hasan Mithu, web developer, CSE student, TypeScript, JavaScript, Next.js, portfolio">
+  <meta name="author" content="Monirul Hasan Mithu">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Monirul Hasan Mithu — Portfolio">
+  <meta property="og:description" content="Selected web applications, experiments, and practical software projects.">
+  <meta property="og:image" content="assets/images/og-image.jpg">
+  <meta property="og:url" content="https://me-at-portfolio-web.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Monirul Hasan Mithu — Web Developer">
+  <meta name="twitter:description" content="Selected web applications, experiments, and practical software projects.">
+  <meta name="twitter:image" content="assets/images/og-image.jpg">
+  <title>Monirul Hasan Mithu — Web Developer</title>
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  
+  <!-- Dialog polyfill for older browsers -->
+  <script>
+    if (typeof HTMLDialogElement === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/dialog-polyfill@0.5.6/dist/dialog-polyfill.min.js"><\/script>');
+    }
+  </script>
+  
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('portfolio-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = saved || preferred;
+      } catch (e) {
+        // Fallback to dark theme if localStorage fails
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#home" aria-label="Monirul Hasan Mithu home">
+        <span class="brand-name">Monirul Hasan Mithu</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#social-links">Social Links</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+          <svg class="icon sun-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.42-1.42M4.92 19.08l1.42-1.42m11.32 0 1.42 1.42M4.92 4.92l1.42 1.42M12 16.5A4.5 4.5 0 1 0 12 7a4.5 4.5 0 0 0 0 9.5Z"/></svg>
+          <svg class="icon moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5 8.5 8.5 0 1 0 20.5 14.3Z"/></svg>
+        </button>
+        <a class="button button-sm button-primary nav-hire" href="#contact">Contact</a>
+        <button class="icon-button menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#social-links">Social Links</a>
+      <a class="button button-primary" href="assets/docs/Monirul-Hasan-Mithu-CV.pdf" download aria-label="Download CV PDF">Download CV</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section" id="home" aria-labelledby="hero-title">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <div class="availability"><span></span>Open to internships and project work</div>
+          <p class="eyebrow">CSE student · Web developer · Dhaka</p>
+          <h1 id="hero-title">I build useful web products with a clear, modern interface.</h1>
+          <p class="hero-intro">I'm Monirul Hasan Mithu. I work across frontend and full-stack projects using JavaScript, TypeScript, React, Next.js, Supabase, and practical backend tools.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore projects
+              <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-6-6 6 6-6 6"/></svg>
+            </a>
+            <a class="button button-ghost" href="assets/docs/Monirul-Hasan-Mithu-CV.pdf" download aria-label="Download CV PDF">
+              <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+              Download CV
+            </a>
+          </div>
+          <div class="hero-socials" aria-label="Social links">
+            <a href="https://github.com/monirul-hasan06" target="_blank" rel="noreferrer" aria-label="Visit GitHub profile">GitHub</a>
+            <a href="https://www.linkedin.com/in/monirul-hasan06/" target="_blank" rel="noreferrer" aria-label="Visit LinkedIn profile">LinkedIn</a>
+            <a href="https://www.facebook.com/monirul.hasan06" target="_blank" rel="noreferrer" aria-label="Visit Facebook profile">Facebook</a>
+            <a href="https://discord.com/users/mithu06" target="_blank" rel="noreferrer" aria-label="Add on Discord">Discord</a>
+            <a href="#social-links">All social links</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Portrait of Monirul Hasan Mithu">
+          <div class="portrait-frame">
+            <div class="portrait-ring"></div>
+            <img src="assets/images/profile.webp" alt="Portrait of Monirul Hasan Mithu, web developer" width="900" height="900" fetchpriority="high" loading="eager">
+            <div class="floating-chip chip-top">TypeScript</div>
+            <div class="floating-chip chip-left">Next.js</div>
+            <div class="floating-chip chip-bottom">Supabase</div>
+          </div>
+          <div class="code-note" aria-hidden="true">
+            <div class="code-dots"><span></span><span></span><span></span></div>
+            <code><b>const</b> focus = [<em>"build"</em>, <em>"learn"</em>, <em>"improve"</em>];</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell hero-stats reveal" aria-label="Portfolio statistics">
+        <div><strong>60+</strong><span>public GitHub repositories</span></div>
+        <div><strong>16</strong><span>projects highlighted here</span></div>
+        <div><strong>3</strong><span>current pinned projects</span></div>
+        <div><strong>100%</strong><span>responsive, accessible layout</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">About me</p><h2 id="about-title">Learning by building real products.</h2></div>
+          <p>I'm a Computer Science and Engineering student based in Mirpur, Dhaka. My work focuses on practical web applications, clean interfaces, authentication, dashboards, data handling, and responsive experiences.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-main panel reveal">
+            <p class="large-copy">I enjoy taking an idea from a rough concept to a working application. Recent work includes private messaging, e-commerce, digital product delivery, community tools, and small browser games.</p>
+            <p>My current direction is full-stack JavaScript and TypeScript. I'm improving how I plan application structure, validate data, manage authentication, and make interfaces work well on phones and desktops.</p>
+            <div class="about-actions">
+              <a class="text-link" href="#projects">See what I've built <span>→</span></a>
+              <a class="text-link" href="mailto:dev.get.in.touch@gmail.com" aria-label="Send email to Monirul Hasan Mithu">Email me <span>→</span></a>
+            </div>
+          </article>
+
+          <div class="about-cards">
+            <article class="mini-card reveal">
+              <span class="mini-card-number">01</span>
+              <h3>Frontend craft</h3>
+              <p>Responsive layouts, reusable components, theme systems, forms, state, and careful interaction details.</p>
+            </article>
+            <article class="mini-card reveal">
+              <span class="mini-card-number">02</span>
+              <h3>Full-stack practice</h3>
+              <p>Authentication, databases, API routes, admin panels, private files, notifications, and deployment.</p>
+            </article>
+            <article class="mini-card reveal">
+              <span class="mini-card-number">03</span>
+              <h3>Product thinking</h3>
+              <p>Simple onboarding, clear feedback, mobile-first behavior, useful defaults, and readable documentation.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="currently-grid reveal">
+          <div><span>Currently learning</span><strong>Deeper JavaScript, TypeScript, system design</strong></div>
+          <div><span>Based in</span><strong>Mirpur, Dhaka, Bangladesh</strong></div>
+          <div><span>Interested in</span><strong>Frontend, full-stack and product engineering</strong></div>
+          <div><span>Community</span><strong>@techcanvix</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="skills" aria-labelledby="skills-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">Skills and tools</p><h2 id="skills-title">A practical web development toolkit.</h2></div>
+          <p>I use these technologies across coursework, personal builds, and deployed projects. The list favors tools visible in my public work rather than percentage-based ratings.</p>
+        </div>
+
+        <div class="skills-layout">
+          <article class="skill-group reveal">
+            <div class="skill-icon">FE</div>
+            <div><h3>Frontend</h3><p>Interfaces, components and browser experiences.</p></div>
+            <div class="tag-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Tailwind CSS</span></div>
+          </article>
+          <article class="skill-group reveal">
+            <div class="skill-icon">BE</div>
+            <div><h3>Backend and data</h3><p>APIs, authentication, databases and private content.</p></div>
+            <div class="tag-list"><span>Node.js</span><span>Express</span><span>Supabase</span><span>PostgreSQL</span><span>Prisma</span><span>MongoDB</span><span>Cloudflare R2</span></div>
+          </article>
+          <article class="skill-group reveal">
+            <div class="skill-icon">DX</div>
+            <div><h3>Workflow</h3><p>Building, checking, documenting and shipping projects.</p></div>
+            <div class="tag-list"><span>Git</span><span>GitHub</span><span>VS Code</span><span>Vercel</span><span>Responsive design</span><span>PWA</span><span>Accessibility</span></div>
+          </article>
+          <article class="skill-group reveal">
+            <div class="skill-icon">CS</div>
+            <div><h3>Programming foundations</h3><p>Core programming practice and problem solving.</p></div>
+            <div class="tag-list"><span>C</span><span>C++</span><span>Data structures</span><span>File handling</span><span>Validation</span><span>Debugging</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">Selected work</p><h2 id="projects-title">Projects that show how I build.</h2></div>
+          <p>The project list is based on public repositories and deployed applications. Use the filters or search to find a specific type of work.</p>
+        </div>
+
+        <div class="project-toolbar reveal">
+          <div class="filter-list" role="group" aria-label="Filter projects">
+            <button class="filter-button active" type="button" data-filter="all">All</button>
+            <button class="filter-button" type="button" data-filter="featured">Featured</button>
+            <button class="filter-button" type="button" data-filter="fullstack">Full stack</button>
+            <button class="filter-button" type="button" data-filter="frontend">Frontend</button>
+            <button class="filter-button" type="button" data-filter="game">Games</button>
+          </div>
+          <label class="project-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+            <span class="sr-only">Search projects</span>
+            <input id="project-search" type="search" placeholder="Search projects or tools" aria-label="Search projects by name or technology">
+          </label>
+        </div>
+
+        <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
+        <div class="project-footer reveal">
+          <p id="project-result-count"></p>
+          <button class="button button-ghost" id="show-all-projects" type="button">Show all projects</button>
+          <a class="button button-ghost" href="https://github.com/monirul-hasan06?tab=repositories" target="_blank" rel="noreferrer">Browse GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="journey" aria-labelledby="journey-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">Beyond the code</p><h2 id="journey-title">A student developer, still exploring.</h2></div>
+          <p>These photographs were part of the earlier portfolio. They now sit in a quieter section that adds personal context without competing with the project work.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-card gallery-tall reveal">
+            <img src="assets/images/gallery-rangpur.webp" alt="Monirul Hasan Mithu at Rangpur Railway Station" loading="lazy" width="1152" height="1536">
+            <figcaption><span>Rangpur</span>Railway Station</figcaption>
+          </figure>
+          <figure class="gallery-card reveal">
+            <img src="assets/images/gallery-museum.webp" alt="Monirul Hasan Mithu at CPSC, BUSMS in Parbatipur, Dinajpur" loading="lazy" width="1200" height="1144">
+            <figcaption><span>Parbatipur, Dinajpur</span>CPSC, BUSMS</figcaption>
+          </figure>
+          <figure class="gallery-card reveal">
+            <img src="assets/images/gallery-campus.webp" alt="Monirul Hasan Mithu in front of a large painted mural" loading="lazy" width="1600" height="869">
+            <figcaption><span>Rangpur Medical College</span>With Starry Night Painting</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-glow"></div>
+      <div class="shell contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Have a project, internship, or idea to discuss?</h2>
+          <p>Send a message with the goal, timeline, and what you already have. I'll respond through email.</p>
+          <div class="contact-list">
+            <a href="mailto:dev.get.in.touch@gmail.com" aria-label="Send email to dev.get.in.touch@gmail.com"><span>Email</span><strong>dev.get.in.touch@gmail.com</strong></a>
+            <a href="tel:+8801521796217" aria-label="Call +880 1521-796217"><span>Phone</span><strong>+880 1521-796217</strong></a>
+            <div><span>Location</span><strong>Mirpur, Dhaka, Bangladesh</strong></div>
+          </div>
+          <button class="copy-button" type="button" data-copy="dev.get.in.touch@gmail.com" aria-label="Copy email address to clipboard">Copy email</button>
+        </div>
+
+        <form class="contact-form panel reveal" action="https://formsubmit.co/dev.get.in.touch@gmail.com" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New message from Monirul's portfolio">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true">
+          
+          <div class="form-row">
+            <label><span>Name</span><input type="text" name="name" autocomplete="name" required placeholder="Your name" aria-required="true"></label>
+            <label><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@example.com" aria-required="true"></label>
+          </div>
+          <label><span>Subject</span><input type="text" name="subject" required placeholder="What would you like to discuss?" aria-required="true"></label>
+          <label><span>Message</span><textarea name="message" rows="6" required placeholder="A short description of the project, role, or question" aria-required="true"></textarea></label>
+          
+          <button class="button button-primary submit-button" type="submit">Send message
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-6-6 6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">The form uses FormSubmit.</p>
+          <div id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section-muted social-section" id="social-links" aria-labelledby="social-title">
+      <div class="social-orbit social-orbit-one" aria-hidden="true"></div>
+      <div class="social-orbit social-orbit-two" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">Social links</p><h2 id="social-title">Find me across the web.</h2></div>
+          <p>Choose the platform that works best for you. Professional profiles come first, followed by social platforms and direct contact options.</p>
+        </div>
+
+        <div class="social-groups">
+          <section class="social-group reveal" aria-labelledby="professional-socials">
+            <div class="social-group-heading">
+              <div><span>01</span><h3 id="professional-socials">Professional</h3></div>
+              <p>Projects, code and career information.</p>
+            </div>
+            <div class="social-grid social-grid-professional">
+              <!-- LinkedIn first -->
+              <a class="social-card" style="--social-color:#0a66c2" href="https://www.linkedin.com/in/monirul-hasan06/" target="_blank" rel="noreferrer" aria-label="Open Monirul Hasan Mithu on LinkedIn">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">in</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>LinkedIn</h4><span class="social-handle">/in/monirul-hasan06</span><p>Professional profile, experience and updates.</p></div>
+                <span class="social-action">Connect</span>
+              </a>
+              <!-- GitHub second -->
+              <a class="social-card" style="--social-color:#18181b" href="https://github.com/monirul-hasan06" target="_blank" rel="noreferrer" aria-label="Open Monirul Hasan Mithu on GitHub">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">GH</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>GitHub</h4><span class="social-handle">@monirul-hasan06</span><p>Code, repositories and current projects.</p></div>
+                <span class="social-action">View profile</span>
+              </a>
+            </div>
+          </section>
+
+          <section class="social-group reveal" aria-labelledby="community-socials">
+            <div class="social-group-heading">
+              <div><span>02</span><h3 id="community-socials">Social and messaging</h3></div>
+              <p>Updates, photos and everyday conversations.</p>
+            </div>
+            <div class="social-grid">
+              <!-- Facebook first -->
+              <a class="social-card" style="--social-color:#1877f2" href="https://www.facebook.com/monirul.hasan06" target="_blank" rel="noreferrer" aria-label="Open Monirul Hasan Mithu on Facebook">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">f</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>Facebook</h4><span class="social-handle">monirul.hasan06</span><p>Public profile and social updates.</p></div>
+                <span class="social-action">View profile</span>
+              </a>
+              <!-- Instagram second -->
+              <a class="social-card" style="--social-color:#e1306c" href="https://www.instagram.com/monirul_hasan_mithu" target="_blank" rel="noreferrer" aria-label="Open Monirul Hasan Mithu on Instagram">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">IG</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>Instagram</h4><span class="social-handle">@monirul_hasan_mithu</span><p>Photos, personal updates and project moments.</p></div>
+                <span class="social-action">Follow</span>
+              </a>
+              <!-- X third -->
+              <a class="social-card" style="--social-color:#111827" href="https://x.com/monirul_hasan06" target="_blank" rel="noreferrer" aria-label="Open Monirul Hasan Mithu on X">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">X</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>X</h4><span class="social-handle">@monirul_hasan06</span><p>Short updates, links and developer thoughts.</p></div>
+                <span class="social-action">Follow</span>
+              </a>
+              <!-- Snapchat fourth -->
+              <a class="social-card" style="--social-color:#f4c900" href="https://www.snapchat.com/@monirul.hasan06" target="_blank" rel="noreferrer" aria-label="Open Monirul Hasan Mithu on Snapchat">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">SC</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>Snapchat</h4><span class="social-handle">@monirul.hasan06</span><p>Personal stories and quick conversations.</p></div>
+                <span class="social-action">Add me</span>
+              </a>
+              <!-- Telegram fifth -->
+              <a class="social-card" style="--social-color:#229ed9" href="https://t.me/someone_from_planet" target="_blank" rel="noreferrer" aria-label="Message Monirul Hasan Mithu on Telegram">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">TG</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>Telegram</h4><span class="social-handle">@someone_from_planet</span><p>Direct messages and longer conversations.</p></div>
+                <span class="social-action">Message</span>
+              </a>
+              <!-- Discord last (sixth) -->
+              <a class="social-card" style="--social-color:#5865F2" href="https://discord.com/users/mithu06" target="_blank" rel="noreferrer" aria-label="Add Monirul Hasan Mithu on Discord">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">DC</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>Discord</h4><span class="social-handle">@mithu06</span><p>Gaming, developer communities and direct chat.</p></div>
+                <span class="social-action">Add me</span>
+              </a>
+            </div>
+          </section>
+
+          <section class="social-group reveal" aria-labelledby="direct-socials">
+            <div class="social-group-heading">
+              <div><span>03</span><h3 id="direct-socials">Direct contact</h3></div>
+              <p>For project discussions, collaboration and enquiries.</p>
+            </div>
+            <div class="social-grid social-grid-direct">
+              <a class="social-card social-card-direct" style="--social-color:#25d366" href="https://wa.me/8801521796217" target="_blank" rel="noreferrer" aria-label="Message Monirul Hasan Mithu on WhatsApp">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">WA</span><span class="social-arrow" aria-hidden="true">↗</span></div>
+                <div><h4>WhatsApp</h4><span class="social-handle">+880 1521-796217</span><p>Start a direct chat for a quick response.</p></div>
+                <span class="social-action">Start chat</span>
+              </a>
+              <article class="social-card social-card-email" style="--social-color:#ea4335">
+                <div class="social-card-top"><span class="social-icon" aria-hidden="true">@</span><span class="social-card-label">Two addresses</span></div>
+                <div><h4>Email</h4><p>Use the first address for professional enquiries or the second for general contact.</p></div>
+                <div class="email-addresses">
+                  <a href="mailto:dev.get.in.touch@gmail.com" aria-label="Email dev.get.in.touch@gmail.com"><span>Professional</span><strong>dev.get.in.touch@gmail.com</strong><b aria-hidden="true">→</b></a>
+                  <a href="mailto:monirul.hasan513@gmail.com" aria-label="Email monirul.hasan513@gmail.com"><span>General</span><strong>monirul.hasan513@gmail.com</strong><b aria-hidden="true">→</b></a>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="brand" href="#home" aria-label="Monirul Hasan Mithu home"> <span class="brand-name">Monirul Hasan Mithu</span></a><p>Web developer and CSE student based in Dhaka.</p></div>
+      <div class="footer-links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a><a href="#social-links">Social Links</a></div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/monirul-hasan06/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/monirul-hasan06" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.facebook.com/monirul.hasan06" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://www.instagram.com/monirul_hasan_mithu" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://x.com/monirul_hasan06" target="_blank" rel="noreferrer">X</a>
+        <a href="https://www.snapchat.com/@monirul.hasan06" target="_blank" rel="noreferrer">Snapchat</a>
+        <a href="https://t.me/someone_from_planet" target="_blank" rel="noreferrer">Telegram</a>
+        <a href="https://discord.com/users/mithu06" target="_blank" rel="noreferrer">Discord</a>
+        <a href="https://wa.me/8801521796217" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a href="mailto:dev.get.in.touch@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="shell footer-bottom"><span>© <span id="current-year"></span> Monirul Hasan Mithu</span><span>
+    <!-- Add to footer-grid -->
+<div class="footer-collab">
+<p>I'm also Collaborating with <a href="https://www.facebook.com/techcanvix" target="_blank" rel="noreferrer">TechCanvix</a> · Developer Team
+</p>
+</div>
+    </span></div>
+  </footer>
+
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close icon-button" type="button" aria-label="Close project details">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <button class="back-to-top icon-button" type="button" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
+  </button>
+
+  <noscript>
+    <div class="noscript">JavaScript is needed for project filtering, theme switching, and the mobile menu.</div>
+  </noscript>
+  
+  <script type="text/javascript" src="assets/js/app.js" defer></script>
+  
+  <!-- Add form validation and dialog polyfill initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize dialog polyfill if needed
+      if (window.dialogPolyfill) {
+        const dialog = document.getElementById('project-dialog');
+        if (dialog && !dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+      }
+      
+      // Form validation
+      const form = document.querySelector('.contact-form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          const name = this.querySelector('[name="name"]');
+          const email = this.querySelector('[name="email"]');
+          const subject = this.querySelector('[name="subject"]');
+          const message = this.querySelector('[name="message"]');
+          const statusDiv = document.getElementById('form-status');
+          
+          let hasError = false;
+          let errorMessage = '';
+          
+          if (!name.value.trim()) {
+            hasError = true;
+            errorMessage += 'Name is required.\n';
+          }
+          
+          if (!email.value.trim() || !email.value.includes('@')) {
+            hasError = true;
+            errorMessage += 'Valid email is required.\n';
+          }
+          
+          if (!subject.value.trim()) {
+            hasError = true;
+            errorMessage += 'Subject is required.\n';
+          }
+          
+          if (!message.value.trim()) {
+            hasError = true;
+            errorMessage += 'Message is required.\n';
+          }
+          
+          if (hasError) {
+            e.preventDefault();
+            statusDiv.textContent = 'Please fill in all required fields.';
+            statusDiv.style.color = '#ef4444';
+          } else {
+            statusDiv.textContent = 'Sending message...';
+            statusDiv.style.color = '#6b7280';
+          }
+        });
+      }
+      
+      // Copy email button
+      const copyBtn = document.querySelector('.copy-button');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+          const email = this.dataset.copy;
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(email).then(() => {
+              const originalText = this.textContent;
+              this.textContent = 'Copied!';
+              setTimeout(() => {
+                this.textContent = originalText;
+              }, 2000);
+            }).catch(() => {
+              // Fallback for older browsers
+              const textarea = document.createElement('textarea');
+              textarea.value = email;
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+              const originalText = this.textContent;
+              this.textContent = 'Copied!';
+              setTimeout(() => {
+                this.textContent = originalText;
+              }, 2000);
+            });
+          } else {
+            // Fallback for very old browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            setTimeout(() => {
+              this.textContent = originalText;
+            }, 2000);
+          }
+        });
+      }
+      
+      // Set current year in footer
+      const yearSpan = document.getElementById('current-year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
+</body>
+</html>
