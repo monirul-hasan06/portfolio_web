@@ -1,4 +1,4 @@
-const CACHE = 'monirul-portfolio-v2-social-links';
+const CACHE = 'monirul-portfolio-v3-mobile-menu';
 const CORE = [
   '/',
   '/index.html',

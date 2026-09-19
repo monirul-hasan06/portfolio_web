@@ -10,7 +10,7 @@ const projects = [
     type: 'Private messaging PWA',
     status: 'Live',
     accent: '#8b5cf6',
-    summary: 'A mobile-first, text-only private messaging app with disappearing messages, groups, replies, push notifications, and persistent login.',
+    summary: 'A private, mobile-first messaging app built around simple chat flows, disappearing messages, notification support, and persistent sign-in.',
     tech: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'PWA'],
     features: [
       'Username and PIN authentication without email or phone sign-in.',
@@ -86,7 +86,7 @@ const projects = [
     type: 'Community publishing app',
     status: 'Live',
     accent: '#eab308',
-    summary: 'A public writing and community-posting application with a TypeScript frontend and Supabase-backed data layer.',
+    summary: 'A public community writing app where content is posted, browsed, and shared through a responsive TypeScript-driven interface.',
     tech: ['React', 'TypeScript', 'Supabase', 'Vite', 'Tailwind'],
     features: [
       'Public wall experience for posting and reading community content.',
@@ -295,7 +295,7 @@ const projects = [
     type: 'Personal portfolio',
     status: 'Live',
     accent: '#8b5cf6',
-    summary: 'The earlier personal website rebuilt into this responsive, theme-aware portfolio with searchable project data and a downloadable CV.',
+    summary: 'A responsive, theme-aware portfolio that presents projects, contact links, and downloadable CV content in a clean static experience.',
     tech: ['HTML', 'CSS', 'JavaScript', 'PWA', 'Accessibility'],
     features: [
       'Light and dark themes with saved preference.',
@@ -326,29 +326,53 @@ let activeFilter = 'all';
 let expanded = false;
 
 function setTheme(theme) {
+  if (!root) return;
   root.dataset.theme = theme;
-  localStorage.setItem('portfolio-theme', theme);
+  try {
+    localStorage.setItem('portfolio-theme', theme);
+  } catch (error) {
+    // Ignore storage issues in restricted or private environments.
+  }
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', theme === 'light' ? '#f7f7fb' : '#0b1020');
-  themeButton.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  if (themeButton) {
+    themeButton.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  }
 }
 
 setTheme(root.dataset.theme || 'dark');
 
-themeButton.addEventListener('click', () => {
-  setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
-});
-
-function setMenu(open) {
-  menuButton.classList.toggle('active', open);
-  menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  mobileMenu.hidden = !open;
-  document.body.classList.toggle('menu-open', open);
+if (themeButton) {
+  themeButton.addEventListener('click', () => {
+    setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
 }
 
-menuButton.addEventListener('click', () => setMenu(mobileMenu.hidden));
-mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+function setMenu(open) {
+  if (!menuButton || !mobileMenu) return;
+  const isOpen = Boolean(open);
+  menuButton.classList.toggle('active', isOpen);
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  mobileMenu.hidden = !isOpen;
+  document.body.classList.toggle('menu-open', isOpen);
+  if (window.innerWidth <= 880) {
+    mobileMenu.style.display = isOpen ? 'flex' : 'none';
+    mobileMenu.style.opacity = isOpen ? '1' : '0';
+    mobileMenu.style.transform = isOpen ? 'translateX(0)' : 'translateX(18px)';
+    mobileMenu.style.pointerEvents = isOpen ? 'auto' : 'none';
+  }
+}
+
+if (menuButton && mobileMenu) {
+  menuButton.addEventListener('click', () => {
+    const shouldOpen = mobileMenu.hidden;
+    setMenu(shouldOpen);
+  });
+}
+if (mobileMenu) {
+  mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+}
 window.addEventListener('resize', () => {
   if (window.innerWidth > 880) setMenu(false);
 });
@@ -474,13 +498,19 @@ const sectionObserver = new IntersectionObserver((entries) => {
 sections.forEach((section) => sectionObserver.observe(section));
 
 function updateScrollUI() {
-  header.classList.toggle('scrolled', window.scrollY > 18);
-  backToTop.classList.toggle('visible', window.scrollY > 700);
+  if (header) {
+    header.classList.toggle('scrolled', window.scrollY > 18);
+  }
+  if (backToTop) {
+    backToTop.classList.toggle('visible', window.scrollY > 700);
+  }
 }
 window.addEventListener('scroll', updateScrollUI, { passive: true });
 updateScrollUI();
 
-backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (backToTop) {
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
 
 document.querySelectorAll('[data-copy]').forEach((button) => {
   button.addEventListener('click', async () => {
@@ -496,13 +526,20 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
 });
 
 const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', () => {
-  const submit = contactForm.querySelector('.submit-button');
-  submit.textContent = 'Sending…';
-  submit.disabled = true;
-});
+if (contactForm) {
+  contactForm.addEventListener('submit', () => {
+    const submit = contactForm.querySelector('.submit-button');
+    if (submit) {
+      submit.textContent = 'Sending…';
+      submit.disabled = true;
+    }
+  });
+}
 
-document.getElementById('current-year').textContent = new Date().getFullYear();
+const currentYear = document.getElementById('current-year');
+if (currentYear) {
+  currentYear.textContent = new Date().getFullYear();
+}
 renderProjects();
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {

@@ -1399,6 +1399,21 @@ html[data-theme="light"] .moon-icon {
   letter-spacing: -0.03em;
 }
 
+.platform-logo {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.platform-logo-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
 .social-arrow {
   color: var(--text-faint);
   font-size: 1.2rem;
@@ -1513,14 +1528,34 @@ html[data-theme="light"] .moon-icon {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr 0.8fr;
-  gap: 50px;
+  grid-template-columns: 1.3fr 0.75fr 0.8fr 0.9fr;
+  gap: 38px;
 }
 
 .footer-grid p {
   max-width: 340px;
   margin: 18px 0 0;
   color: var(--text-soft);
+}
+
+.footer-collab {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.footer-collab p {
+  max-width: 220px;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.footer-collab a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .footer-links {
@@ -1729,14 +1764,31 @@ html[data-theme="light"] .moon-icon {
   .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .mobile-menu {
     position: fixed;
-    inset: var(--header-height) 0 0;
-    display: grid;
-    align-content: start;
+    top: calc(var(--header-height) + 10px);
+    right: 12px;
+    left: auto;
+    display: none;
+    width: min(320px, calc(100vw - 24px));
+    flex-direction: column;
     gap: 6px;
-    overflow: auto;
-    border-top: 1px solid var(--line);
-    background: var(--bg);
-    padding: 26px 20px 40px;
+    max-height: calc(100vh - var(--header-height) - 28px);
+    overflow-y: auto;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--panel-solid);
+    box-shadow: var(--shadow);
+    padding: 18px 16px 20px;
+    z-index: 1100;
+    opacity: 0;
+    transform: translateX(18px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+  .mobile-menu:not([hidden]) {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
   }
   .mobile-menu[hidden] { display: none; }
   .mobile-menu a:not(.button) { border-bottom: 1px solid var(--line); color: var(--text); padding: 15px 4px; text-decoration: none; font-size: 1.12rem; font-weight: 750; }
@@ -1759,6 +1811,7 @@ html[data-theme="light"] .moon-icon {
   .contact-grid { grid-template-columns: 1fr; }
   .social-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .social-grid-direct { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 
