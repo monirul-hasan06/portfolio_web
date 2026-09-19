@@ -325,13 +325,15 @@ const backToTop = document.querySelector('.back-to-top');
 let activeFilter = 'all';
 let expanded = false;
 
-function setTheme(theme) {
+function setTheme(theme, persist = true) {
   if (!root) return;
   root.dataset.theme = theme;
-  try {
-    localStorage.setItem('portfolio-theme', theme);
-  } catch (error) {
-    // Ignore storage issues in restricted or private environments.
+  if (persist) {
+    try {
+      localStorage.setItem('portfolio-theme', theme);
+    } catch (error) {
+      // Ignore storage issues in restricted or private environments.
+    }
   }
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', theme === 'light' ? '#f7f7fb' : '#0b1020');
@@ -340,7 +342,16 @@ function setTheme(theme) {
   }
 }
 
-setTheme(root.dataset.theme || 'dark');
+setTheme(root.dataset.theme || 'dark', false);
+
+const systemTheme = window.matchMedia('(prefers-color-scheme: light)');
+systemTheme.addEventListener?.('change', (event) => {
+  try {
+    if (!localStorage.getItem('portfolio-theme')) setTheme(event.matches ? 'light' : 'dark', false);
+  } catch (error) {
+    setTheme(event.matches ? 'light' : 'dark', false);
+  }
+});
 
 if (themeButton) {
   themeButton.addEventListener('click', () => {
@@ -361,6 +372,16 @@ function setMenu(open) {
     mobileMenu.style.opacity = isOpen ? '1' : '0';
     mobileMenu.style.transform = isOpen ? 'translateX(0)' : 'translateX(18px)';
     mobileMenu.style.pointerEvents = isOpen ? 'auto' : 'none';
+  } else {
+    mobileMenu.style.display = '';
+    mobileMenu.style.opacity = '';
+    mobileMenu.style.transform = '';
+    mobileMenu.style.pointerEvents = '';
+  }
+  if (isOpen && window.innerWidth <= 880) {
+    requestAnimationFrame(() => mobileMenu.querySelector('a')?.focus());
+  } else if (!isOpen && document.activeElement instanceof HTMLElement && mobileMenu.contains(document.activeElement)) {
+    menuButton.focus();
   }
 }
 
@@ -376,11 +397,17 @@ if (mobileMenu) {
 window.addEventListener('resize', () => {
   if (window.innerWidth > 880) setMenu(false);
 });
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !mobileMenu.hidden) setMenu(false);
+});
+document.addEventListener('click', (event) => {
+  if (!mobileMenu.hidden && !mobileMenu.contains(event.target) && event.target !== menuButton) setMenu(false);
+});
 
 function projectCard(project) {
   const liveLink = project.live
-    ? `<a href="${project.live}" target="_blank" rel="noreferrer" aria-label="Open ${project.title} live site">Live <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5"/></svg></a>`
-    : `<a href="${project.github}" target="_blank" rel="noreferrer" aria-label="Open ${project.title} source">Source <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5"/></svg></a>`;
+    ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer" aria-label="Open ${project.title} live site">Live <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5"/></svg></a>`
+    : `<a href="${project.github}" target="_blank" rel="noopener noreferrer" aria-label="Open ${project.title} source">Source <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5"/></svg></a>`;
 
   return `
     <article class="project-card" style="--card-accent:${project.accent}">
@@ -424,7 +451,11 @@ filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     activeFilter = button.dataset.filter;
     expanded = false;
-    filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+    filterButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-pressed', String(isActive));
+    });
     renderProjects();
   });
 });
@@ -439,7 +470,7 @@ showAllButton.addEventListener('click', () => {
 function openProject(id) {
   const project = projects.find((item) => item.id === id);
   if (!project) return;
-  const liveButton = project.live ? `<a class="button button-primary" href="${project.live}" target="_blank" rel="noreferrer">Open live site</a>` : '';
+  const liveButton = project.live ? `<a class="button button-primary" href="${project.live}" target="_blank" rel="noopener noreferrer">Open live site</a>` : '';
   dialogContent.innerHTML = `
     <div class="dialog-hero" style="--dialog-accent:${project.accent}"><span class="dialog-monogram" aria-hidden="true">${project.monogram}</span></div>
     <div class="dialog-body" style="--dialog-accent:${project.accent}">
@@ -450,10 +481,15 @@ function openProject(id) {
       <div class="tag-list">${project.tech.map((item) => `<span>${item}</span>`).join('')}</div>
       <div class="dialog-actions">
         ${liveButton}
-        <a class="button button-ghost" href="${project.github}" target="_blank" rel="noreferrer">View source</a>
+        <a class="button button-ghost" href="${project.github}" target="_blank" rel="noopener noreferrer">View source</a>
       </div>
     </div>`;
-  projectDialog.showModal();
+    if (typeof projectDialog.showModal === 'function') {
+      projectDialog.showModal();
+    } else if (window.dialogPolyfill) {
+      window.dialogPolyfill.registerDialog(projectDialog);
+      projectDialog.showModal();
+    }
   document.body.style.overflow = 'hidden';
 }
 
@@ -475,27 +511,33 @@ projectDialog.addEventListener('close', () => {
   document.body.style.overflow = '';
 });
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px' });
-
-document.querySelectorAll('.reveal').forEach((item) => revealObserver.observe(item));
+const revealItems = [...document.querySelectorAll('.reveal')];
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add('visible'));
+}
 
 const sections = [...document.querySelectorAll('main section[id]')];
 const navLinks = [...document.querySelectorAll('.desktop-nav a')];
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
-    }
-  });
-}, { rootMargin: '-35% 0px -55%', threshold: 0 });
-sections.forEach((section) => sectionObserver.observe(section));
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+      }
+    });
+  }, { rootMargin: '-35% 0px -55%', threshold: 0 });
+  sections.forEach((section) => sectionObserver.observe(section));
+}
 
 function updateScrollUI() {
   if (header) {

@@ -12,7 +12,7 @@ A dependency-free static portfolio that can be deployed directly to Vercel, Netl
 - Accessible navigation, keyboard focus, reduced-motion support, and skip link
 - Contact form through FormSubmit
 - Dedicated, categorized Social Links section with professional, social, messaging, WhatsApp, and two email options
-- PWA manifest and lightweight offline cache
+- PWA manifest and lightweight offline navigation cache
 - SEO metadata, sitemap, robots file, custom 404 page, and Vercel security headers
 - No visitor tracking scripts
 
@@ -35,6 +35,8 @@ Open `http://localhost:8080`.
 5. Deploy.
 
 The included `vercel.json` adds clean URLs, cache rules, and basic security headers.
+
+The service worker caches the core shell and uses the cached homepage for offline document navigation. Individual assets are only cached after a successful request; missing images and other asset requests are not replaced with HTML.
 
 ## Update personal information
 

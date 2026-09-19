@@ -1,4 +1,4 @@
-const CACHE = 'monirul-portfolio-v3-mobile-menu';
+const CACHE = 'monirul-portfolio-v4-offline-navigation';
 const CORE = [
   '/',
   '/index.html',
@@ -6,6 +6,7 @@ const CORE = [
   '/assets/js/app.js',
   '/assets/images/profile.webp',
   '/assets/images/favicon.png',
+  '/assets/images/icon-maskable.svg',
   '/assets/docs/Monirul-Hasan-Mithu-CV.pdf'
 ];
 self.addEventListener('install', (event) => {
@@ -16,9 +17,16 @@ self.addEventListener('activate', (event) => {
 });
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
-  event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
-    const copy = response.clone();
-    caches.open(CACHE).then((cache) => cache.put(event.request, copy));
-    return response;
-  }).catch(() => caches.match('/index.html'))));
+  event.respondWith(
+    caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
+      if (response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE).then((cache) => cache.put(event.request, copy));
+      }
+      return response;
+    }).catch(() => {
+      if (event.request.mode === 'navigate') return caches.match('/index.html');
+      return Response.error();
+    }))
+  );
 });
