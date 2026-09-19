@@ -1795,7 +1795,7 @@ html[data-theme="light"] .moon-icon {
     right: 12px;
     left: auto;
     display: none;
-    width: min(320px, calc(100vw - 24px));
+    width: clamp(280px, 33.333vw, 360px);
     flex-direction: column;
     gap: 6px;
     max-height: calc(100vh - var(--header-height) - 28px);
