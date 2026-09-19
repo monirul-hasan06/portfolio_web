@@ -1795,7 +1795,7 @@ html[data-theme="light"] .moon-icon {
     right: 12px;
     left: auto;
     display: none;
-    width: clamp(280px, 33.333vw, 360px);
+    width: calc(100vw / 3);
     flex-direction: column;
     gap: 6px;
     max-height: calc(100vh - var(--header-height) - 28px);
@@ -1881,6 +1881,17 @@ html[data-theme="light"] .moon-icon {
 }
 
 @media (max-width: 440px) {
+  .mobile-menu {
+    width: calc(100vw / 3);
+    padding: 14px 10px 16px;
+  }
+  .mobile-menu a:not(.button) {
+    padding: 12px 2px;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
   .hero-stats { grid-template-columns: 1fr; }
   .hero-stats > div:nth-child(even) { border-left: 0; }
   .hero-stats > div + div { border-top: 1px solid var(--line); }
