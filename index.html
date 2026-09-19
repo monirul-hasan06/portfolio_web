@@ -9,12 +9,16 @@
   <meta name="author" content="Monirul Hasan Mithu">
   <link rel="canonical" href="https://me-at-portfolio-web.vercel.app/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Monirul Hasan Mithu — Portfolio">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Monirul Hasan Mithu — Portfolio">
   <meta property="og:description" content="Selected web applications, experiments, and practical software projects.">
   <meta property="og:image" content="https://me-at-portfolio-web.vercel.app/assets/images/og-image.jpg">
   <meta property="og:image:alt" content="Monirul Hasan Mithu portfolio preview">
   <meta property="og:url" content="https://me-at-portfolio-web.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@monirul_hasan06">
+  <meta name="twitter:creator" content="@monirul_hasan06">
   <meta name="twitter:title" content="Monirul Hasan Mithu — Web Developer">
   <meta name="twitter:description" content="Selected web applications, experiments, and practical software projects.">
   <meta name="twitter:image" content="https://me-at-portfolio-web.vercel.app/assets/images/og-image.jpg">
@@ -27,20 +31,44 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Monirul Hasan Mithu",
-      "jobTitle": "Web Developer",
-      "url": "https://me-at-portfolio-web.vercel.app/",
-      "image": "https://me-at-portfolio-web.vercel.app/assets/images/profile.webp",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dhaka",
-        "addressCountry": "BD"
-      },
-      "sameAs": [
-        "https://github.com/monirul-hasan06",
-        "https://www.linkedin.com/in/monirul-hasan06/",
-        "https://www.facebook.com/monirul.hasan06"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://me-at-portfolio-web.vercel.app/#person",
+          "name": "Monirul Hasan Mithu",
+          "jobTitle": "Web Developer",
+          "url": "https://me-at-portfolio-web.vercel.app/",
+          "image": "https://me-at-portfolio-web.vercel.app/assets/images/profile.webp",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dhaka",
+            "addressCountry": "BD"
+          },
+          "sameAs": [
+            "https://github.com/monirul-hasan06",
+            "https://www.linkedin.com/in/monirul-hasan06/",
+            "https://www.facebook.com/monirul.hasan06",
+            "https://x.com/monirul_hasan06"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://me-at-portfolio-web.vercel.app/#website",
+          "url": "https://me-at-portfolio-web.vercel.app/",
+          "name": "Monirul Hasan Mithu — Portfolio",
+          "description": "Portfolio of Monirul Hasan Mithu, a web developer and CSE student.",
+          "publisher": { "@id": "https://me-at-portfolio-web.vercel.app/#person" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://me-at-portfolio-web.vercel.app/#profile",
+          "url": "https://me-at-portfolio-web.vercel.app/",
+          "name": "Monirul Hasan Mithu — Web Developer",
+          "isPartOf": { "@id": "https://me-at-portfolio-web.vercel.app/#website" },
+          "mainEntity": { "@id": "https://me-at-portfolio-web.vercel.app/#person" },
+          "inLanguage": "en"
+        }
       ]
     }
   </script>
